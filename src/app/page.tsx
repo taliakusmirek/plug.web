@@ -1,22 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 
-// SVG avatars for corners (placeholders)
-const Avatar1 = () => (
-  <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#7B3AED" /><ellipse cx="28" cy="24" rx="14" ry="16" fill="#A259D9" /><ellipse cx="28" cy="38" rx="12" ry="7" fill="#FFD86B" /></svg>
-);
-const Avatar2 = () => (
-  <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#FFD86B" /><ellipse cx="28" cy="24" rx="14" ry="16" fill="#7B3AED" /><ellipse cx="28" cy="38" rx="12" ry="7" fill="#A259D9" /></svg>
-);
-const Avatar3 = () => (
-  <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#A259D9" /><ellipse cx="28" cy="24" rx="14" ry="16" fill="#FFD86B" /><ellipse cx="28" cy="38" rx="12" ry="7" fill="#7B3AED" /></svg>
-);
-const Avatar4 = () => (
-  <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#7B3AED" /><ellipse cx="28" cy="24" rx="14" ry="16" fill="#FFD86B" /><ellipse cx="28" cy="38" rx="12" ry="7" fill="#A259D9" /></svg>
-);
 
 // Example Open Peeps SVG avatar with colored background
-const PeepAvatar = ({ bg = '#FFD86B', hair = '#7B3AED', skin = '#F3E8FF', accent = '#A259D9', style = {} }) => (
+const PeepAvatar = ({ bg = '#1b7dff', hair = '#c2f04e', skin = '#F3E8FF', accent = '#c2f04e', style = {} }) => (
   <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={style}>
     <circle cx="32" cy="32" r="32" fill={bg} />
     <ellipse cx="32" cy="36" rx="18" ry="20" fill={skin} />
@@ -108,7 +95,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-20">
           <div className="flex justify-between items-center h-24" style={{minHeight:'96px'}}>
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
+            <div className="flex-shrink-0 flex items-center -ml-14">
               <img src="/logo.png" alt="Plug logo" className="h-48 w-48 -mt-2" style={{height:'96px', width:'96px'}} />
             </div>
             {/* Navigation Links */}
@@ -129,70 +116,78 @@ export default function Home() {
 
       {/* Hero Section with SVG scalloped border */}
       <section id="hero" className="relative w-full min-h-[700px] flex flex-row items-center justify-between bg-transparent px-8 pt-24 pb-12 overflow-hidden">
-        <div className="flex-1 flex flex-col justify-center z-10 max-w-xl">
+        <div className="flex-1 flex flex-col justify-center z-10 max-w-xl ml-32 mt-20">
           <h1 className="text-[64px] leading-[1.05] font-normal text-white mb-6" style={{fontFamily:'Inter', letterSpacing: '-0.03em', textAlign: 'left'}}>Plug into the<br/>rooms that<br/>change everything.</h1>
-          <p className="text-lg text-[#B6B9C6] mb-10 max-w-lg" style={{textAlign:'left', fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network — built for ambitious Gen Z builders.</p>
+          <p className="text-lg text-[#B6B9C6] mb-10 max-w-lg" style={{textAlign:'left', fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network: built for ambitious Gen Z builders.</p>
           <div className="flex gap-4 mb-10" style={{justifyContent:'flex-start'}}>
             <button onClick={openWaitlistModal} className="bg-[#1b7dff] text-white px-8 py-3 rounded-[10px] font-bold text-lg shadow transition border-2 border-[#1b7dff] hover:bg-[#005be8] hover:border-[#005be8]" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Create Your Plug Profile</button>
             <a href="#how" className="bg-transparent text-white px-8 py-3 rounded-[10px] font-semibold text-lg border border-white/30 hover:bg-white/10 transition" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Watch How it Works</a>
           </div>
         </div>
-        {/* Card Collage - pixel-perfect, glassmorphism, real demo data */}
-        <div className="flex-1 flex items-center justify-center relative min-h-[520px] w-full md:w-auto mt-0">
-          {/* Top card: Events in New York City */}
-          <div className="absolute left-1/2 -translate-x-1/2 -top-10 rotate-[-10deg]" style={{zIndex:3, filter:'drop-shadow(0 12px 64px rgba(16,24,32,0.28))'}}>
-            <div className="rounded-[40px] bg-white/40 backdrop-blur-2xl w-[410px] h-[230px] flex flex-col overflow-hidden relative" style={{boxShadow:'0 24px 80px 0 rgba(16,24,32,0.22)'}}>
-              {/* Browser bar */}
-              <div className="flex items-center gap-1 px-4 py-2 bg-[#F5F6FA]/80">
-                <span className="w-2 h-2 rounded-full bg-[#D1D5DB]"></span>
-                <span className="w-2 h-2 rounded-full bg-[#D1D5DB]"></span>
-                <span className="w-2 h-2 rounded-full bg-[#D1D5DB]"></span>
-              </div>
-              {/* Event image */}
-              <div className="w-full h-[90px] flex items-center justify-center relative">
-                <img src="/event-mock.jpg" alt="Event" className="object-cover w-full h-full rounded-t-[32px]" style={{objectPosition:'center'}} />
-                {/* Testimonial chip overlays image */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-8 flex items-center gap-3 bg-white/30 backdrop-blur-2xl text-white text-base px-5 py-3 rounded-full shadow-xl border-2 border-white/70" style={{zIndex:10, fontFamily:'Inter', fontWeight:600, minWidth:'290px', boxShadow:'0 8px 32px 0 rgba(16,24,32,0.22)'}}>
-                  <img src="/avatar1.png" alt="avatar" className="w-10 h-10 rounded-full object-cover border-2 border-white/80" />
-                  <span className="whitespace-nowrap text-white text-lg font-semibold" style={{textShadow:'0 1px 8px #0008'}}>The mission hebad mv'10 ardmilo Contre carlan</span>
+        {/* REPLACE THIS AREA WITH NEW COLLAGE */}
+        <div className="flex-1 flex items-center justify-center relative min-h-[400px] w-full md:w-auto mt-0 -ml-48">
+          {/* Holographic, rotated, floating cards collage with small cards on top and all cards using a subtle gray gradient border */}
+          <div className="relative w-full h-[420px] flex items-center justify-center">
+            {/* NYC card (bottom layer) */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-16 rotate-[-7deg]" style={{zIndex:1}}>
+              <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
+                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-[340px]">
+                  <div className="px-6 pt-6 pb-4">
+                    <div className="text-xl font-bold text-[#10182A] mb-2" style={{fontFamily:'Inter'}}>Events in New York City</div>
+                    {/* Inner card for Startup Pitch Night */}
+                    <div className="rounded-2xl p-[4px] bg-gradient-to-br from-[#aeafaf99] via-[#f7f8fbcf] to-transparent">
+                      <div className="bg-white rounded-2xl p-4 flex flex-col items-center">
+                        <div className="rounded-xl overflow-hidden w-full mb-3">
+                          <img src="/pitch.jpg" alt="Event" className="object-cover w-full h-[120px]" style={{objectPosition:'center'}} />
+                        </div>
+                        <div className="text-lg  text-[#10182A] mb-3" style={{fontFamily:'Inter'}}>Startup Pitch Night</div>
+                        <button className="bg-[#1b7dff] hover:bg-[#005be8] text-white font-bold text-sm px-5 py-2 rounded-full flex items-center gap-2 border border-[#1b7dff] shadow transition" style={{fontFamily:'Inter'}}>
+                          RSVP Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col px-6 pt-3 pb-4">
-                <div className="text-[#10182A] font-black text-xl mb-1" style={{fontFamily:'Inter', textAlign:'left', letterSpacing:'-0.01em'}}>Events in New York City</div>
-                <div className="text-[#10182A] text-lg font-semibold" style={{fontFamily:'Inter', textAlign:'left'}}>Startup Pirce Night</div>
+            </div>
+            {/* Mission card (top right, above NYC card) */}
+            <div className="absolute left-[60%] top-6 rotate-[-2deg]" style={{zIndex:2}}>
+              <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
+                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-[260px]">
+                  <div className="px-5 pt-5 pb-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="w-10 h-10 rounded-xl bg-[#1b7dff] flex items-center justify-center"><svg width="28" height="28" fill="none" viewBox="0 0 28 28"><polygon points="14,4 17,12 26,12 18.5,17 21,25 14,20 7,25 9.5,17 2,12 11,12" fill="#fff"/></svg></span>
+                    </div>
+                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>It's time to get your XP</div>
+                    <div className="text-[#10182A] text-sm font-medium mb-1" style={{fontFamily:'Inter'}}>Attend a Demo Day Event</div>
+                    <div className="flex items-center mt-1">
+                      <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
+                        <svg width="16" height="16" fill="none" viewBox="0 0 18 18"><circle cx="8" cy="8" r="8" fill="#1b7dff"/><text x="8" y="12" textAnchor="middle" fontSize="10" fill="#fff">✓</text></svg>
+                        800 XP
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          {/* Middle card: Attend a Demo mission */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-36 rotate-[-4deg]" style={{zIndex:4, filter:'drop-shadow(0 12px 64px rgba(16,24,32,0.28))'}}>
-            <div className="rounded-[40px] bg-white/40 backdrop-blur-2xl w-[370px] h-[130px] flex flex-col overflow-hidden relative" style={{boxShadow:'0 24px 80px 0 rgba(16,24,32,0.22)'}}>
-              <div className="flex items-center gap-3 px-7 pt-6">
-                <span className="w-12 h-12 rounded-full bg-[#FFD86B] flex items-center justify-center text-3xl">🧑‍💻</span>
-                <span className="text-[#B6B9C6] text-lg font-semibold" style={{fontFamily:'Inter'}}>YooT var nøyagd</span>
-              </div>
-              <div className="flex-1 flex flex-col px-7 pb-5">
-                <div className="text-[#10182A] font-black text-2xl leading-tight mb-1" style={{fontFamily:'Inter', textAlign:'left', letterSpacing:'-0.01em'}}>DOOor #vigmon</div>
-                <div className="text-[#10182A] text-base font-medium mb-2" style={{fontFamily:'Inter', textAlign:'left'}}>Attend a Demo mission</div>
-                <span className="absolute left-7 bottom-4 bg-white/60 text-[#1b7dff] font-black text-base px-5 py-2 rounded-full shadow border-2 border-[#1b7dff]/20" style={{backdropFilter:'blur(6px)'}}>800 KP</span>
-              </div>
-            </div>
-          </div>
-          {/* Bottom card: Coleab frooms */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-72 rotate-[8deg]" style={{zIndex:2, filter:'drop-shadow(0 12px 64px rgba(16,24,32,0.28))'}}>
-            <div className="rounded-[40px] bg-white/40 backdrop-blur-2xl w-[340px] h-[120px] flex flex-col overflow-hidden relative" style={{boxShadow:'0 24px 80px 0 rgba(16,24,32,0.22)'}}>
-              <div className="flex-1 flex flex-col px-7 pt-6 pb-4">
-                <div className="text-[#10182A] font-black text-lg mb-1 flex items-center gap-2" style={{fontFamily:'Inter', textAlign:'left'}}>Coleab frooms <span className="ml-1"><svg width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M9 1.5a7.5 7.5 0 1 1 0 15a7.5 7.5 0 0 1 0-15z" stroke="#10182A" strokeWidth="1.5"/></svg></span></div>
-                <div className="text-[#10182A] text-base font-medium mb-2" style={{fontFamily:'Inter', textAlign:'left'}}>S.eeking co-founders for health app</div>
-                <div className="flex items-center gap-3 mt-1">
-                  <button className="bg-white/60 text-[#1b7dff] font-black text-base px-4 py-2 rounded-full flex items-center gap-2 shadow border-2 border-[#1b7dff]/20" style={{backdropFilter:'blur(6px)'}}>
-                    <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1b7dff"/><text x="9" y="13" textAnchor="middle" fontSize="12" fill="#fff">•</text></svg>Dot In
-                  </button>
-                  <button className="bg-white/60 text-[#10182A] font-black text-base px-4 py-2 rounded-full flex items-center gap-2 shadow border-2 border-[#10182A]/20" style={{backdropFilter:'blur(6px)'}}>
-                    <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><rect x="3" y="3" width="12" height="12" rx="3" fill="#10182A"/><text x="9" y="13" textAnchor="middle" fontSize="12" fill="#fff">R</text></svg>Resgram
-                  </button>
-                  <button className="bg-white/60 text-[#229ED9] font-black text-base px-4 py-2 rounded-full flex items-center gap-2 shadow border-2 border-[#229ED9]/20" style={{backdropFilter:'blur(6px)'}}>
-                    <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><rect x="3" y="3" width="12" height="12" rx="3" fill="#229ED9"/><text x="9" y="13" textAnchor="middle" fontSize="12" fill="#fff">T</text></svg>Teleggram
-                  </button>
+            {/* Collab Rooms card (below mission, right side) */}
+            <div className="absolute left-[68%] top-44 rotate-[6deg]" style={{zIndex:2}}>
+              <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
+                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-[250px]">
+                  <div className="px-5 pt-5 pb-4">
+                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Join this Collab Room?</div>
+                    <div className="text-[#10182A] text-sm font-medium mb-2" style={{fontFamily:'Inter'}}>Seeking co-founders for health app</div>
+                    <div className="flex items-center gap-2 mt-1">
+                      <button className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
+                        <svg width="16" height="16" fill="none" viewBox="0 0 18 18"><circle cx="8" cy="8" r="8" fill="#1b7dff"/><path d="M5 8l2 2 4-4" stroke="#fff" strokeWidth="1.5"/></svg>
+                        250 XP
+                      </button>
+                      <button className="bg-[#F5F6FA] text-[#10182A] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
+                        <svg width="16" height="16" fill="none" viewBox="0 0 18 18"><rect width="12" height="12" rx="2" fill="#e6e8f0" x="2" y="2"/><text x="8" y="12" textAnchor="middle" fontSize="8" fill="#222">?</text></svg>
+                        Details
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -203,7 +198,7 @@ export default function Home() {
       {/* FEATURE DEEP-DIVE / INTERACTIVE DEMO SECTION */}
       <section className="w-full py-24 flex flex-col items-center bg-transparent">
         <h2 className="text-[48px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Build your Plug Score.<br/>Unlock new rooms. Get noticed.</h2>
-        <p className="text-[#B6B9C6] text-center max-w-2xl mb-48 text-xl font-normal" style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and fise on your school's leaderboard.</p>
+        <p className="text-[#B6B9C6] text-center max-w-2xl mb-48 text-xl font-normal" style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and rise on your school's leaderboard.</p>
         
         {/* Step-by-step walkthrough */}
         <div className="flex flex-col gap-16 w-full max-w-6xl">
@@ -233,8 +228,8 @@ export default function Home() {
                 <div className="text-[#10182A] font-bold text-xl mb-6 text-center" style={{fontFamily:'Inter'}}>Profile Setup</div>
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#FFD86B] flex items-center justify-center">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#10182A"/><path d="M10 6l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4l2-4z" fill="#FFD86B"/></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#1b7dff] flex items-center justify-center">
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#10182A"/><path d="M10 6l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4l2-4z" fill="#1b7dff"/></svg>
                     </div>
                     <div className="flex-1">
                       <div className="text-[#10182A] font-semibold text-sm" style={{fontFamily:'Inter'}}>Target Cities</div>
@@ -242,8 +237,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#7B3AED] flex items-center justify-center">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="2" width="16" height="16" rx="3" fill="#10182A"/><path d="M6 8h8M6 12h6" stroke="#7B3AED" strokeWidth="2"/></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#c2f04e] flex items-center justify-center">
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="2" width="16" height="16" rx="3" fill="#10182A"/><path d="M6 8h8M6 12h6" stroke="#c2f04e" strokeWidth="2"/></svg>
                     </div>
                     <div className="flex-1">
                       <div className="text-[#10182A] font-semibold text-sm" style={{fontFamily:'Inter'}}>Industries</div>
@@ -251,8 +246,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#A259D9] flex items-center justify-center">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" fill="#10182A"/><path d="M3 17c0-3.9 3.1-7 7-7s7 3.1 7 7" fill="#A259D9"/></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#c2f04e] flex items-center justify-center">
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" fill="#10182A"/><path d="M3 17c0-3.9 3.1-7 7-7s7 3.1 7 7" fill="#c2f04e"/></svg>
                     </div>
                     <div className="flex-1">
                       <div className="text-[#10182A] font-semibold text-sm" style={{fontFamily:'Inter'}}>Role</div>
@@ -272,7 +267,7 @@ export default function Home() {
                 <div className="flex flex-col gap-4">
                   <div className="bg-white rounded-[16px] p-4">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="w-8 h-8 rounded-full bg-[#FFD86B] flex items-center justify-center text-sm">🧑‍💻</span>
+                      <span className="w-8 h-8 rounded-full bg-[#1b7dff] flex items-center justify-center text-sm">🧑‍💻</span>
                       <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Ava (NYU '26)</span>
                     </div>
                     <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Apply to Y Combinator</div>
@@ -284,7 +279,7 @@ export default function Home() {
                   </div>
                   <div className="bg-white rounded-[16px] p-4">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="w-8 h-8 rounded-full bg-[#7B3AED] flex items-center justify-center text-sm">💬</span>
+                      <span className="w-8 h-8 rounded-full bg-[#c2f04e] flex items-center justify-center text-sm">💬</span>
                       <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Marcus (Stanford '25)</span>
                     </div>
                     <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Cold DM a VC</div>
@@ -343,7 +338,7 @@ export default function Home() {
               <div className="flex flex-col gap-4 w-[360px]">
                 {/* Event card */}
                 <div className="bg-white rounded-[20px] shadow-lg overflow-hidden">
-                  <img src="/event-mock.jpg" alt="Event" className="w-full h-24 object-cover" />
+                  <img src="/networking.jpeg" alt="Event" className="w-full h-24 object-cover" />
                   <div className="p-4">
                     <div className="text-[#10182A] font-bold text-lg mb-1" style={{fontFamily:'Inter'}}>Gen Z Founders Mixer</div>
                     <div className="text-[#B6B9C6] text-sm mb-3" style={{fontFamily:'Inter'}}>NYC • Tomorrow • 7:00 PM</div>
@@ -437,81 +432,34 @@ export default function Home() {
         <div className="flex flex-row gap-8 items-stretch justify-center w-full max-w-6xl">
           {/* Mission Engine */}
           <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
-            {/* Cycle arrows SVG */}
-            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><path d="M16 8a16 16 0 1 1-4.7 31.2M16 8v8m0-8h8" stroke="#222" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><path d="M8 40a16 16 0 0 1 4.7-31.2M8 40v-8m0 8h8" stroke="#222" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            {/* Purple Lightning Bolt SVG (small, white bolt) */}
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4">
+              <rect width="48" height="48" rx="24" fill="#c2f04e"/>
+              <path d="M28.5 9L15 30h7.5l-1.5 9L33 18h-7.5l1.5-9z" fill="#fff" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
+            </svg>
             <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Mission Engine</div>
             <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Weekly XP-driven tesks that posh you for ward</div>
           </div>
           {/* Event Radar */}
           <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Ticket/star SVG */}
-            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><rect x="8" y="12" width="32" height="24" rx="6" fill="#FFD86B"/><path d="M24 18l2.1 4.3 4.7.7-3.4 3.3.8 4.7-4.2-2.2-4.2 2.2.8-4.7-3.4-3.3 4.7-.7L24 18z" fill="#A259D9"/></svg>
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><rect x="8" y="12" width="32" height="24" rx="6" fill="#1b7dff"/><path d="M24 18l2.1 4.3 4.7.7-3.4 3.3.8 4.7-4.2-2.2-4.2 2.2.8-4.7-3.4-3.3 4.7-.7L24 18z" fill="#c2f04e"/></svg>
             <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Event Radar</div>
             <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Curated events from-uuma, Partiful Evenbrite – sotted by vibe</div>
           </div>
           {/* Outreach Stack */}
           <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Checklist SVG */}
-            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><rect x="8" y="12" width="32" height="24" rx="6" fill="#7B3AED"/><path d="M16 24l6 6 10-10" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><rect x="8" y="12" width="32" height="24" rx="6" fill="#c2f04e"/><path d="M16 24l6 6 10-10" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
             <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Outreach Stack</div>
             <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Scriptsandtools that get. you replies</div>
           </div>
           {/* Collab Rooms */}
           <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Chat bubbles SVG */}
-            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><ellipse cx="24" cy="24" rx="16" ry="12" fill="#7B3AED"/><ellipse cx="32" cy="32" rx="10" ry="7" fill="#A259D9"/><ellipse cx="16" cy="32" rx="10" ry="7" fill="#FFD86B"/></svg>
+            <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><ellipse cx="24" cy="24" rx="16" ry="12" fill="#c2f04e"/><ellipse cx="32" cy="32" rx="10" ry="7" fill="#c2f04e"/><ellipse cx="16" cy="32" rx="10" ry="7" fill="#1b7dff"/></svg>
             <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Collab Rooms</div>
             <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Metc h with other builders by project, vibe, or goal</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Waitlist Section (also in modal) */}
-      <section className="relative w-full py-20 flex flex-col items-center justify-center bg-[#FFD59E] overflow-hidden">
-        {/* Dots background */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <DotsBackground />
-        </div>
-        <div className="relative z-10 w-full max-w-2xl flex flex-col items-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#3B2063] text-center mb-2">
-            Get <span className="italic text-[#A259D9]">Plugged</span> In
-          </h2>
-          <p className="mb-8 text-[#7B3AED] text-center max-w-xl">
-            Join the waitlist to get early access to Plug.
-          </p>
-          {/* Scalloped Card */}
-          <div className="w-full max-w-xl mx-auto bg-white rounded-[2.5rem] shadow-xl border-4 border-[#F3E8FF] px-6 py-10 flex flex-col items-center">
-            <div className="text-lg font-bold text-[#3B2063] mb-6 text-center">Fill up the form. We will get back to you soon</div>
-            <form className="flex flex-col gap-5 w-full">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="border-2 border-[#A259D9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#A259D9] text-base"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="border-2 border-[#A259D9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#A259D9] text-base"
-                required
-              />
-              <input
-                type="text"
-                placeholder="City"
-                className="border-2 border-[#A259D9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#A259D9] text-base"
-              />
-              <input
-                type="text"
-                placeholder="Role or What You're Working On"
-                className="border-2 border-[#A259D9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#A259D9] text-base"
-              />
-              <button
-                type="submit"
-                className="bg-[#A259D9] hover:bg-[#7B3AED] text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition border-2 border-[#A259D9] mt-2"
-              >
-                Get connected
-              </button>
-            </form>
           </div>
         </div>
       </section>
@@ -616,7 +564,7 @@ export default function Home() {
 
       {/* YOUR SOCIAL RESUME, REINVENTED SECTION (pixel-perfect) */}
       <section className="w-full py-24 flex flex-col items-center bg-transparent">
-        <h2 className="text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented</h2>
+        <h2 className="text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented.</h2>
         <p className="text-[#E6E8F0] text-center max-w-2xl mb-12 text-2xl font-normal" style={{fontFamily:'Inter', lineHeight:'1.3'}}>Show off your networking momentum, <br/>not just a GPA.</p>
         <div className="flex flex-col items-center justify-center">
           {/* Profile Card */}
@@ -629,9 +577,9 @@ export default function Home() {
             </div>
             <div className="flex flex-row items-center mt-8 mb-6 w-full">
               <div className="flex-1">
-                <div className="text-white text-3xl font-bold mb-2" style={{fontFamily:'Inter'}}>Talia U.</div>
+                <div className="text-white text-3xl font-bold mb-2" style={{fontFamily:'Inter'}}>Talia K.</div>
                 <div className="flex items-center gap-4">
-                  <img src="/profile-photo.jpg" alt="Talia U." className="w-20 h-20 rounded-full object-cover border-2 border-[#222]" />
+                  <img src="/talia.png" alt="Talia K." className="w-20 h-20 rounded-full object-cover border-2 border-[#222]" />
                   <div className="flex flex-col gap-1 ml-2">
                     <div className="text-white text-lg font-normal" style={{fontFamily:'Inter'}}>8 Collabs</div>
                     <div className="text-white text-lg font-normal" style={{fontFamily:'Inter'}}>17 Events Attended</div>
@@ -642,16 +590,15 @@ export default function Home() {
               {/* Event Launchpad badge */}
               <div className="absolute right-10 top-10 flex flex-col items-end">
                 <span className="bg-[#1b7dff] text-white font-semibold text-base rounded-lg px-4 py-2 flex items-center gap-2 mb-2" style={{fontFamily:'Inter'}}>
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><rect width="20" height="20" rx="6" fill="#fff"/><path d="M6 10l4-4v3h4v2h-4v3l-4-4z" fill="#1b7dff"/></svg>
-                  Event<br className="sm:hidden"/> Launchpad
+                5 | Event<br className="sm:hidden"/> Launchpad
                 </span>
                 {/* XP popup */}
-                <span className="bg-[#222] text-white font-semibold text-base rounded-full px-4 py-2 shadow mt-2" style={{fontFamily:'Inter'}}>+150 XP</span>
+                <span className="bg-[#222] text-white font-semibold text-base rounded-full px-4 py-2 shadow mt-2" style={{fontFamily:'Inter'}}>1500 XP</span>
               </div>
             </div>
           </div>
           {/* CTA Button */}
-          <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-10 py-5 rounded-[12px] font-bold text-2xl shadow transition border-2 border-[#1b7dff] mt-2" style={{minWidth:'340px', textAlign:'center', fontFamily:'Inter'}}>Claim your Plug handle</button>
+          <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-10 py-5 rounded-[12px] font-bold text-2xl shadow transition mt-10 mb-20 border-2 border-[#1b7dff] mt-2" style={{minWidth:'340px', textAlign:'center', fontFamily:'Inter'}}>Claim your Plug handle</button>
         </div>
       </section>
 
