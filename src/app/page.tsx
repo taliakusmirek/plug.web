@@ -91,12 +91,12 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen" style={{background:'#0B1220'}}>
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B1220]/80 backdrop-blur-md border-b border-white/10 h-24" style={{minHeight:'96px'}}>
-        <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-20">
-          <div className="flex justify-between items-center h-24" style={{minHeight:'96px'}}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B1220]/80 backdrop-blur-md border-b border-white/10 h-16 sm:h-24" style={{minHeight:'64px'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-20">
+          <div className="flex justify-between items-center h-16 sm:h-24" style={{minHeight:'64px'}}>
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center -ml-14">
-              <img src="/logo.png" alt="Plug logo" className="h-48 w-48 -mt-2" style={{height:'96px', width:'96px'}} />
+            <div className="flex-shrink-0 flex items-center -ml-2 sm:-ml-14">
+              <img src="/logo.png" alt="Plug logo" className="h-12 w-12 sm:h-72 sm:w-72 -mt-2" style={{height:'108px', width:'108px'}} />
             </div>
             {/* Navigation Links */}
             <div className="hidden md:block">
@@ -108,26 +108,26 @@ export default function Home() {
             </div>
             {/* CTA Button */}
             <div className="flex items-center">
-              <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-8 py-3 rounded-xl font-semibold text-lg transition border-2 border-[#1b7dff] hover:border-[#005be8] shadow-lg" style={{minWidth:'140px'}}>Join Plug</button>
+              <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-4 sm:px-8 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-lg transition border-2 border-[#1b7dff] hover:border-[#005be8] shadow-lg min-w-[80px] sm:min-w-[140px]">Join Plug</button>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section with SVG scalloped border */}
-      <section id="hero" className="relative w-full min-h-[700px] flex flex-row items-center justify-between bg-transparent px-8 pt-24 pb-12 overflow-hidden">
-        <div className="flex-1 flex flex-col justify-center z-10 max-w-xl ml-32 mt-20">
-          <h1 className="text-[64px] leading-[1.05] font-normal text-white mb-6" style={{fontFamily:'Inter', letterSpacing: '-0.03em', textAlign: 'left'}}>Plug into the<br/>rooms that<br/>change everything.</h1>
-          <p className="text-lg text-[#B6B9C6] mb-10 max-w-lg" style={{textAlign:'left', fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network: built for ambitious Gen Z builders.</p>
-          <div className="flex gap-4 mb-10" style={{justifyContent:'flex-start'}}>
-            <button onClick={openWaitlistModal} className="bg-[#1b7dff] text-white px-8 py-3 rounded-[10px] font-bold text-lg shadow transition border-2 border-[#1b7dff] hover:bg-[#005be8] hover:border-[#005be8]" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Create Your Plug Profile</button>
-            <a href="#how" className="bg-transparent text-white px-8 py-3 rounded-[10px] font-semibold text-lg border border-white/30 hover:bg-white/10 transition" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Watch How it Works</a>
+      <section id="hero" className="relative w-full min-h-[500px] sm:min-h-[700px] flex flex-col sm:flex-row items-center justify-between bg-transparent px-4 sm:px-8 pt-20 sm:pt-24 pb-12 overflow-hidden">
+        <div className="flex-1 flex flex-col justify-center z-10 max-w-xl mx-auto sm:mx-0 sm:ml-32 sm:mt-20 text-center sm:text-left">
+          <h1 className="text-[40px] sm:text-[64px] leading-[1.05] font-normal text-white mb-6" style={{fontFamily:'Inter', letterSpacing: '-0.03em'}}>Plug into the<br/>rooms that<br/>change everything.</h1>
+          <p className="text-base sm:text-lg text-[#B6B9C6] mb-10 max-w-lg mx-auto sm:mx-0" style={{fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network: built for ambitious Gen Z builders.</p>
+          <div className="flex flex-col sm:flex-row gap-4 mb-10" style={{justifyContent:'flex-start'}}>
+            <button onClick={openWaitlistModal} className="bg-[#1b7dff] text-white px-6 sm:px-8 py-3 rounded-[10px] font-bold text-base sm:text-lg shadow transition border-2 border-[#1b7dff] hover:bg-[#005be8] hover:border-[#005be8]" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Create Your Plug Profile</button>
+            <a href="#how" className="bg-transparent text-white px-6 sm:px-8 py-3 rounded-[10px] font-semibold text-base sm:text-lg border border-white/30 hover:bg-white/10 transition" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Watch How it Works</a>
           </div>
         </div>
         {/* REPLACE THIS AREA WITH NEW COLLAGE */}
-        <div className="flex-1 flex items-center justify-center relative min-h-[400px] w-full md:w-auto mt-0 -ml-48">
+        <div className="flex-1 flex items-center justify-center relative min-h-[300px] sm:min-h-[400px] w-full mt-8 sm:mt-0 sm:-ml-48">
           {/* Holographic, rotated, floating cards collage with small cards on top and all cards using a subtle gray gradient border */}
-          <div className="relative w-full h-[420px] flex items-center justify-center">
+          <div className="relative w-full h-[300px] sm:h-[420px] flex items-center justify-center scale-75 sm:scale-100">
             {/* NYC card (bottom layer) */}
             <div className="absolute left-1/2 -translate-x-1/2 top-16 rotate-[-7deg]" style={{zIndex:1}}>
               <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
@@ -196,35 +196,35 @@ export default function Home() {
       </section>
 
       {/* FEATURE DEEP-DIVE / INTERACTIVE DEMO SECTION */}
-      <section className="w-full py-24 flex flex-col items-center bg-transparent">
-        <h2 className="text-[48px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Build your Plug Score.<br/>Unlock new rooms. Get noticed.</h2>
-        <p className="text-[#B6B9C6] text-center max-w-2xl mb-48 text-xl font-normal" style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and rise on your school's leaderboard.</p>
+      <section className="w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0">
+        <h2 className="text-[32px] sm:text-[48px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Build your Plug Score.<br/>Unlock new rooms. Get noticed.</h2>
+        <p className="text-[#B6B9C6] text-center max-w-2xl mb-24 sm:mb-48 text-lg sm:text-xl font-normal px-4" style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and rise on your school's leaderboard.</p>
         
         {/* Step-by-step walkthrough */}
-        <div className="flex flex-col gap-16 w-full max-w-6xl">
+        <div className="flex flex-col gap-12 sm:gap-16 w-full max-w-6xl">
           {/* Step 1: Set your vibe */}
-          <div className="flex flex-row items-center gap-12">
-            <div className="flex-1">
-              <div className="text-[#1b7dff] font-bold text-lg mb-2" style={{fontFamily:'Inter'}}>Step 1</div>
-              <h3 className="text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Set your vibe</h3>
-              <p className="text-[#B6B9C6] text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Tell us what cities, industries, and roles you're into. We'll curate your experience around your goals.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
+            <div className="flex-1 order-2 sm:order-1">
+              <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 1</div>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Set your vibe</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Tell us what cities, industries, and roles you're into. We'll curate your experience around your goals.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Choose your target cities (NYC, LA, SF, Austin)</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Choose your target cities (NYC, LA, SF, Austin)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Select industries (Tech, Design, Finance, Healthcare)</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Select industries (Tech, Design, Finance, Healthcare)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Define your role (Founder, Designer, Engineer, Student)</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Define your role (Founder, Designer, Engineer, Student)</span>
                 </div>
               </div>
             </div>
-            <div className="flex-1 flex justify-center">
-              <div className="bg-white rounded-[24px] shadow-xl p-8 w-[320px] border-0" style={{boxShadow:'0 16px 64px 0 rgba(16,24,32,0.15)'}}>
+            <div className="flex-1 flex justify-center order-1 sm:order-2">
+              <div className="bg-white rounded-[24px] shadow-xl p-6 sm:p-8 w-[280px] sm:w-[320px] border-0" style={{boxShadow:'0 16px 64px 0 rgba(16,24,32,0.15)'}}>
                 <div className="text-[#10182A] font-bold text-xl mb-6 text-center" style={{fontFamily:'Inter'}}>Profile Setup</div>
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-3">
@@ -260,8 +260,8 @@ export default function Home() {
           </div>
 
           {/* Step 2: Get missions */}
-          <div className="flex flex-row items-center gap-12">
-            <div className="flex-1 flex justify-center order-2">
+          <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
+            <div className="flex-1 flex justify-center order-2 sm:order-1">
               <div className="bg-[#181F2B] rounded-[24px] shadow-xl p-8 w-[360px] border-0" style={{boxShadow:'0 16px 64px 0 rgba(16,24,32,0.15)'}}>
                 <div className="text-white font-bold text-xl mb-6 text-center" style={{fontFamily:'Inter'}}>Weekly Missions</div>
                 <div className="flex flex-col gap-4">
@@ -292,45 +292,45 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex-1 order-1">
-              <div className="text-[#1b7dff] font-bold text-lg mb-2" style={{fontFamily:'Inter'}}>Step 2</div>
-              <h3 className="text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Get missions</h3>
-              <p className="text-[#B6B9C6] text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Weekly XP-driven tasks that push you forward. From applying to fellowships to networking with founders.</p>
+            <div className="flex-1 order-1 sm:order-2">
+              <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 2</div>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Get missions</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Weekly XP-driven tasks that push you forward. From applying to fellowships to networking with founders.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Personalized missions based on your goals</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Personalized missions based on your goals</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Earn XP for completing tasks</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Earn XP for completing tasks</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Unlock exclusive access as you level up</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Unlock exclusive access as you level up</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Step 3: Attend events / Collab */}
-          <div className="flex flex-row items-center gap-12">
+          <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
             <div className="flex-1">
-              <div className="text-[#1b7dff] font-bold text-lg mb-2" style={{fontFamily:'Inter'}}>Step 3</div>
-              <h3 className="text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Attend events & collab</h3>
-              <p className="text-[#B6B9C6] text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Curated events from Partiful, Eventbrite, and exclusive Plug meetups. Plus collab rooms for finding co-founders.</p>
+              <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 3</div>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Attend events & collab</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Curated events from Partiful, Eventbrite, and exclusive Plug meetups. Plus collab rooms for finding co-founders.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Curated events from multiple platforms</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Curated events from multiple platforms</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Collab rooms for project matching</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Collab rooms for project matching</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Direct RSVP and networking tools</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Direct RSVP and networking tools</span>
                 </div>
               </div>
             </div>
@@ -366,8 +366,8 @@ export default function Home() {
           </div>
 
           {/* Step 4: Earn XP → Unlock access */}
-          <div className="flex flex-row items-center gap-12">
-            <div className="flex-1 flex justify-center order-2">
+          <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
+            <div className="flex-1 flex justify-center order-2 sm:order-1">
               <div className="bg-gradient-to-br from-[#1b7dff] to-[#005be8] rounded-[24px] shadow-xl p-8 w-[360px] border-0" style={{boxShadow:'0 16px 64px 0 rgba(27,125,255,0.3)'}}>
                 <div className="text-white font-bold text-xl mb-6 text-center" style={{fontFamily:'Inter'}}>Level Up</div>
                 <div className="flex flex-col gap-6">
@@ -400,22 +400,22 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex-1 order-1">
-              <div className="text-[#1b7dff] font-bold text-lg mb-2" style={{fontFamily:'Inter'}}>Step 4</div>
-              <h3 className="text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Earn XP → Unlock access</h3>
-              <p className="text-[#B6B9C6] text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Your XP grows with every action. Level up to unlock exclusive rooms, founder chats, and premium events.</p>
+            <div className="flex-1 order-1 sm:order-2">
+              <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 4</div>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Earn XP → Unlock access</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Your XP grows with every action. Level up to unlock exclusive rooms, founder chats, and premium events.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Earn XP for RSVPs, missions, and collabs</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Earn XP for RSVPs, missions, and collabs</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Unlock exclusive founder and VC access</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Unlock exclusive founder and VC access</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-base" style={{fontFamily:'Inter'}}>Rise on your school's leaderboard</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Rise on your school's leaderboard</span>
                 </div>
               </div>
             </div>
@@ -426,40 +426,40 @@ export default function Home() {
      
 
       {/* WHY PLUG WORKS SECTION (pixel-perfect) */}
-      <section className="w-full py-24 flex flex-col items-center bg-transparent">
-        <h2 className="text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Why Plug Works</h2>
-        <p className="text-[#E6E8F0] text-center max-w-2xl mb-16 text-2xl font-normal" style={{fontFamily:'Inter', lineHeight:'1.3'}}>The engine that turns learning into access, and connections into action.</p>
-        <div className="flex flex-row gap-8 items-stretch justify-center w-full max-w-6xl">
+      <section className="w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0">
+        <h2 className="text-[40px] sm:text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Why Plug Works</h2>
+        <p className="text-[#E6E8F0] text-center max-w-2xl mb-12 sm:mb-16 text-lg sm:text-2xl font-normal px-4" style={{fontFamily:'Inter', lineHeight:'1.3'}}>The engine that turns learning into access, and connections into action.</p>
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-stretch justify-center w-full max-w-6xl">
           {/* Mission Engine */}
-          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
+          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-6 sm:px-8 py-8 sm:py-10 w-full sm:w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Purple Lightning Bolt SVG (small, white bolt) */}
             <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4">
               <rect width="48" height="48" rx="24" fill="#c2f04e"/>
               <path d="M28.5 9L15 30h7.5l-1.5 9L33 18h-7.5l1.5-9z" fill="#fff" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
             </svg>
-            <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Mission Engine</div>
-            <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Weekly XP-driven tesks that posh you for ward</div>
+            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Mission Engine</div>
+            <div className="text-[#222] text-sm sm:text-base text-center" style={{fontFamily:'Inter'}}>Weekly XP-driven tasks that push you forward</div>
           </div>
           {/* Event Radar */}
-          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
+          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-6 sm:px-8 py-8 sm:py-10 w-full sm:w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Ticket/star SVG */}
             <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><rect x="8" y="12" width="32" height="24" rx="6" fill="#1b7dff"/><path d="M24 18l2.1 4.3 4.7.7-3.4 3.3.8 4.7-4.2-2.2-4.2 2.2.8-4.7-3.4-3.3 4.7-.7L24 18z" fill="#c2f04e"/></svg>
-            <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Event Radar</div>
-            <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Curated events from-uuma, Partiful Evenbrite – sotted by vibe</div>
+            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Event Radar</div>
+            <div className="text-[#222] text-sm sm:text-base text-center" style={{fontFamily:'Inter'}}>Curated events from multiple platforms, sorted by vibe</div>
           </div>
           {/* Outreach Stack */}
-          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
+          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-6 sm:px-8 py-8 sm:py-10 w-full sm:w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Checklist SVG */}
             <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><rect x="8" y="12" width="32" height="24" rx="6" fill="#c2f04e"/><path d="M16 24l6 6 10-10" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Outreach Stack</div>
-            <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Scriptsandtools that get. you replies</div>
+            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Outreach Stack</div>
+            <div className="text-[#222] text-sm sm:text-base text-center" style={{fontFamily:'Inter'}}>Scripts and tools that get you replies</div>
           </div>
           {/* Collab Rooms */}
-          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-8 py-10 w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
+          <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-6 sm:px-8 py-8 sm:py-10 w-full sm:w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Chat bubbles SVG */}
             <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><ellipse cx="24" cy="24" rx="16" ry="12" fill="#c2f04e"/><ellipse cx="32" cy="32" rx="10" ry="7" fill="#c2f04e"/><ellipse cx="16" cy="32" rx="10" ry="7" fill="#1b7dff"/></svg>
-            <div className="text-[#10182A] font-bold text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Collab Rooms</div>
-            <div className="text-[#222] text-base text-center" style={{fontFamily:'Inter'}}>Metc h with other builders by project, vibe, or goal</div>
+            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Collab Rooms</div>
+            <div className="text-[#222] text-sm sm:text-base text-center" style={{fontFamily:'Inter'}}>Match with other builders by project, vibe, or goal</div>
           </div>
         </div>
       </section>
@@ -563,54 +563,54 @@ export default function Home() {
       )}
 
       {/* YOUR SOCIAL RESUME, REINVENTED SECTION (pixel-perfect) */}
-      <section className="w-full py-24 flex flex-col items-center bg-transparent">
-        <h2 className="text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented.</h2>
-        <p className="text-[#E6E8F0] text-center max-w-2xl mb-12 text-2xl font-normal" style={{fontFamily:'Inter', lineHeight:'1.3'}}>Show off your networking momentum, <br/>not just a GPA.</p>
+      <section className="w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0">
+        <h2 className="text-[40px] sm:text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented.</h2>
+        <p className="text-[#E6E8F0] text-center max-w-2xl mb-8 sm:mb-12 text-lg sm:text-2xl font-normal px-4" style={{fontFamily:'Inter', lineHeight:'1.3'}}>Show off your networking momentum, <br/>not just a GPA.</p>
         <div className="flex flex-col items-center justify-center">
           {/* Profile Card */}
-          <div className="bg-[#101622] rounded-[24px] px-12 py-10 shadow-lg flex flex-col items-start border border-[#3A4252] relative mb-10" style={{boxShadow:'0 8px 32px 0 rgba(16,24,32,0.10)', width:'480px', maxWidth:'90vw'}}>
+          <div className="bg-[#101622] rounded-[24px] px-6 sm:px-12 py-8 sm:py-10 shadow-lg flex flex-col items-start border border-[#3A4252] relative mb-8 sm:mb-10" style={{boxShadow:'0 8px 32px 0 rgba(16,24,32,0.10)', width:'90vw', maxWidth:'480px'}}>
             {/* Browser dots */}
-            <div className="flex gap-2 absolute left-6 top-6">
+            <div className="flex gap-2 absolute left-4 sm:left-6 top-4 sm:top-6">
               <span className="w-2 h-2 rounded-full bg-[#444] inline-block"></span>
               <span className="w-2 h-2 rounded-full bg-[#444] inline-block"></span>
               <span className="w-2 h-2 rounded-full bg-[#444] inline-block"></span>
             </div>
-            <div className="flex flex-row items-center mt-8 mb-6 w-full">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center mt-8 mb-6 w-full">
               <div className="flex-1">
-                <div className="text-white text-3xl font-bold mb-2" style={{fontFamily:'Inter'}}>Talia K.</div>
-                <div className="flex items-center gap-4">
-                  <img src="/talia.png" alt="Talia K." className="w-20 h-20 rounded-full object-cover border-2 border-[#222]" />
-                  <div className="flex flex-col gap-1 ml-2">
-                    <div className="text-white text-lg font-normal" style={{fontFamily:'Inter'}}>8 Collabs</div>
-                    <div className="text-white text-lg font-normal" style={{fontFamily:'Inter'}}>17 Events Attended</div>
-                    <div className="text-white text-lg font-normal" style={{fontFamily:'Inter'}}>1 Fellowship Accepted</div>
+                <div className="text-white text-2xl sm:text-3xl font-bold mb-2" style={{fontFamily:'Inter'}}>Talia K.</div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <img src="/talia.png" alt="Talia K." className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-[#222]" />
+                  <div className="flex flex-col gap-1 ml-0 sm:ml-2 mt-2 sm:mt-0">
+                    <div className="text-white text-base sm:text-lg font-normal" style={{fontFamily:'Inter'}}>8 Collabs</div>
+                    <div className="text-white text-base sm:text-lg font-normal" style={{fontFamily:'Inter'}}>17 Events Attended</div>
+                    <div className="text-white text-base sm:text-lg font-normal" style={{fontFamily:'Inter'}}>1 Fellowship Accepted</div>
                   </div>
                 </div>
               </div>
               {/* Event Launchpad badge */}
-              <div className="absolute right-10 top-10 flex flex-col items-end">
-                <span className="bg-[#1b7dff] text-white font-semibold text-base rounded-lg px-4 py-2 flex items-center gap-2 mb-2" style={{fontFamily:'Inter'}}>
+              <div className="absolute right-4 sm:right-10 top-4 sm:top-10 flex flex-col items-end">
+                <span className="bg-[#1b7dff] text-white font-semibold text-sm sm:text-base rounded-lg px-3 sm:px-4 py-1 sm:py-2 flex items-center gap-2 mb-2" style={{fontFamily:'Inter'}}>
                 5 | Event<br className="sm:hidden"/> Launchpad
                 </span>
                 {/* XP popup */}
-                <span className="bg-[#222] text-white font-semibold text-base rounded-full px-4 py-2 shadow mt-2" style={{fontFamily:'Inter'}}>1500 XP</span>
+                <span className="bg-[#222] text-white font-semibold text-sm sm:text-base rounded-full px-3 sm:px-4 py-1 sm:py-2 shadow mt-2" style={{fontFamily:'Inter'}}>1500 XP</span>
               </div>
             </div>
           </div>
           {/* CTA Button */}
-          <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-10 py-5 rounded-[12px] font-bold text-2xl shadow transition mt-10 mb-20 border-2 border-[#1b7dff] mt-2" style={{minWidth:'340px', textAlign:'center', fontFamily:'Inter'}}>Claim your Plug handle</button>
+          <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-6 sm:px-10 py-4 sm:py-5 rounded-[12px] font-bold text-lg sm:text-2xl shadow transition mt-6 sm:mt-10 mb-12 sm:mb-20 border-2 border-[#1b7dff] w-full sm:w-auto min-w-[280px] sm:min-w-[340px]" style={{textAlign:'center', fontFamily:'Inter'}}>Claim your Plug handle</button>
         </div>
       </section>
 
       {/* FOOTER (pixel-perfect) */}
-      <footer className="w-full bg-transparent pt-16 pb-8 px-4 text-white" style={{fontFamily:'Inter'}}>
-        <div className="max-w-5xl mx-auto flex flex-row justify-between items-start mb-8 gap-8">
+      <footer className="w-full bg-transparent pt-12 sm:pt-16 pb-6 sm:pb-8 px-4 text-white" style={{fontFamily:'Inter'}}>
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-8 gap-6 sm:gap-8">
           {/* Plug logo/text on left */}
-          <div className="flex flex-col min-w-[120px] -ml-8 mr-12 -mt-8">
-            <img src="/logo.png" alt="Plug logo" className="h-40 w-40 -mb-8" />
+          <div className="flex flex-col min-w-[120px] -ml-4 sm:-ml-8 mr-0 sm:mr-12 -mt-4 sm:-mt-8">
+            <img src="/logo.png" alt="Plug logo" className="h-24 w-24 sm:h-40 sm:w-40 -mb-4 sm:-mb-8" />
           </div>
           {/* Columns */}
-          <div className="flex flex-1 flex-row justify-between gap-8">
+          <div className="flex flex-1 flex-col sm:flex-row justify-between gap-6 sm:gap-8">
             <div className="flex flex-col min-w-[120px]">
               <span className="font-semibold mb-2">Product</span>
               <a href="#how" className="mb-1 hover:underline">How it Works</a>
@@ -627,7 +627,7 @@ export default function Home() {
               <a href="#help" className="mb-1 hover:underline">Help Center</a>
               <a href="#contact" className="hover:underline">Contact Us</a>
             </div>
-            <div className="flex flex-col min-w-[120px] items-end">
+            <div className="flex flex-col min-w-[120px] items-start sm:items-end">
               <span className="font-semibold mb-2">Follow Us</span>
               <div className="flex flex-row gap-4 mt-1">
                 {/* Twitter SVG */}
@@ -643,7 +643,7 @@ export default function Home() {
           </div>
         </div>
         {/* Bottom row */}
-        <div className="text-center text-[#E6E8F0] text-base mt-8" style={{fontFamily:'Inter'}}>
+        <div className="text-center text-[#E6E8F0] text-sm sm:text-base mt-6 sm:mt-8" style={{fontFamily:'Inter'}}>
           © 2025 Plug &nbsp;·&nbsp; <a href="#privacy" className="hover:underline">Privacy Policy</a> &nbsp;·&nbsp; <a href="#terms" className="hover:underline">Terms of Service</a>
         </div>
       </footer>
