@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,38 +23,57 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically insert into Supabase
-    // For now, we'll simulate a successful response
-    const waitlistEntry = {
-      id: Date.now().toString(),
-      firstName,
-      email,
-      city: city || null,
-      role: role || null,
-      createdAt: new Date().toISOString(),
-      status: 'pending'
-    };
+    // Check if email already exists
+    const { data: existingUser } = await supabase
+      .from('waitlist')
+      .select('email')
+      .eq('email', email)
+      .single();
 
-    // TODO: Replace with actual Supabase insert
-    // const { data, error } = await supabase
-    //   .from('waitlist')
-    //   .insert([waitlistEntry]);
+    if (existingUser) {
+      return NextResponse.json(
+        { error: 'Email already registered on waitlist' },
+        { status: 409 }
+      );
+    }
 
-    // if (error) {
-    //   console.error('Supabase error:', error);
-    //   return NextResponse.json(
-    //     { error: 'Failed to save to database' },
-    //     { status: 500 }
-    //   );
-    // }
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from('waitlist')
+      .insert([{
+        first_name: firstName,
+        email: email,
+        city: city || null,
+        role: role || null,
+        status: 'pending',
+        source: 'website'
+      }])
+      .select()
+      .single();
 
-    console.log('Waitlist entry:', waitlistEntry);
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { error: 'Failed to save to database' },
+        { status: 500 }
+      );
+    }
+
+    console.log('Waitlist entry created:', data);
 
     return NextResponse.json(
       { 
         success: true, 
         message: 'Successfully joined waitlist',
-        data: waitlistEntry 
+        data: {
+          id: data.id,
+          firstName: data.first_name,
+          email: data.email,
+          city: data.city,
+          role: data.role,
+          status: data.status,
+          createdAt: data.created_at
+        }
       },
       { status: 200 }
     );

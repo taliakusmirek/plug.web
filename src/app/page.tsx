@@ -63,8 +63,6 @@ export default function Home() {
     setSubmitStatus('idle');
 
     try {
-      // Here you would typically send to your API endpoint
-      // For now, we'll simulate the API call
       const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: {
@@ -81,7 +79,14 @@ export default function Home() {
           setSubmitStatus('idle');
         }, 2000);
       } else {
-        setSubmitStatus('error');
+        // Handle specific error cases
+        if (response.status === 409) {
+          // Duplicate email
+          setSubmitStatus('error');
+          // You could add a specific error message here if needed
+        } else {
+          setSubmitStatus('error');
+        }
       }
     } catch {
       setSubmitStatus('error');
