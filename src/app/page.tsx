@@ -1,36 +1,37 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
+// Custom hook for intersection observer
+const useIntersectionObserver = (options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLElement>(null);
 
-// Example Open Peeps SVG avatar with colored background
-const PeepAvatar = ({ bg = '#1b7dff', hair = '#c2f04e', skin = '#F3E8FF', accent = '#c2f04e', style = {} }) => (
-  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={style}>
-    <circle cx="32" cy="32" r="32" fill={bg} />
-    <ellipse cx="32" cy="36" rx="18" ry="20" fill={skin} />
-    <ellipse cx="32" cy="24" rx="12" ry="10" fill={hair} />
-    <ellipse cx="32" cy="48" rx="10" ry="4" fill={accent} />
-  </svg>
-);
-
-// DotsBackground component for client-side random dots
-function DotsBackground() {
-  const [dots, setDots] = useState<{cx: string, cy: string}[]>([]);
   useEffect(() => {
-    setDots(
-      Array.from({ length: 80 }).map((_, i) => ({
-        cx: Math.random() * 100 + "%",
-        cy: Math.random() * 100 + "%",
-      }))
-    );
-  }, []);
-  return (
-    <svg width="100%" height="100%" className="w-full h-full" style={{ position: "absolute", top: 0, left: 0 }}>
-      {dots.map((dot, i) => (
-        <circle key={i} cx={dot.cx} cy={dot.cy} r="1.5" fill="#fff" fillOpacity="0.5" />
-      ))}
-    </svg>
-  );
-}
+    const currentRef = ref.current;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !hasAnimated) {
+        setIsIntersecting(true);
+        setHasAnimated(true);
+      }
+    }, {
+      threshold: 0.1,
+      ...options
+    });
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [hasAnimated, options]);
+
+  return [ref, isIntersecting] as [React.RefObject<HTMLElement>, boolean];
+};
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -42,6 +43,12 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Intersection observer hooks for animations
+  const [heroRef, heroVisible] = useIntersectionObserver();
+  const [featuresRef, featuresVisible] = useIntersectionObserver();
+  const [whyWorksRef, whyWorksVisible] = useIntersectionObserver();
+  const [resumeRef, resumeVisible] = useIntersectionObserver();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -76,7 +83,7 @@ export default function Home() {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -115,17 +122,30 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with SVG scalloped border */}
-      <section id="hero" className="relative w-full min-h-[500px] sm:min-h-[700px] flex flex-col sm:flex-row items-center justify-between bg-transparent px-4 sm:px-8 pt-20 sm:pt-24 pb-12 overflow-hidden">
+      <section 
+        ref={heroRef}
+        className={`relative w-full min-h-[500px] sm:min-h-[700px] flex flex-col sm:flex-row items-center justify-between bg-transparent px-4 sm:px-8 pt-20 sm:pt-24 pb-12 overflow-hidden transition-all duration-800 ease-out ${
+          heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="flex-1 flex flex-col justify-center z-10 max-w-xl mx-auto sm:mx-0 sm:ml-32 sm:mt-20 text-center sm:text-left">
-          <h1 className="text-[40px] sm:text-[64px] leading-[1.05] font-normal text-white mb-6" style={{fontFamily:'Inter', letterSpacing: '-0.03em'}}>Plug into the<br/>rooms that<br/>change everything.</h1>
-          <p className="text-base sm:text-lg text-[#B6B9C6] mb-10 max-w-lg mx-auto sm:mx-0" style={{fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network: built for ambitious Gen Z builders.</p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-10" style={{justifyContent:'flex-start'}}>
+          <h1 className={`text-[40px] sm:text-[64px] leading-[1.05] font-normal text-white mb-6 transition-all duration-800 delay-200 ${
+            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{fontFamily:'Inter', letterSpacing: '-0.03em'}}>Plug into the<br/>rooms that<br/>change everything.</h1>
+          <p className={`text-base sm:text-lg text-[#B6B9C6] mb-10 max-w-lg mx-auto sm:mx-0 transition-all duration-800 delay-400 ${
+            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network: built for ambitious Gen Z builders.</p>
+          <div className={`flex flex-col sm:flex-row gap-4 mb-10 transition-all duration-800 delay-600 ${
+            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{justifyContent:'flex-start'}}>
             <button onClick={openWaitlistModal} className="bg-[#1b7dff] text-white px-6 sm:px-8 py-3 rounded-[10px] font-bold text-base sm:text-lg shadow transition border-2 border-[#1b7dff] hover:bg-[#005be8] hover:border-[#005be8]" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Create Your Plug Profile</button>
             <a href="#how" className="bg-transparent text-white px-6 sm:px-8 py-3 rounded-[10px] font-semibold text-base sm:text-lg border border-white/30 hover:bg-white/10 transition" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Watch How it Works</a>
           </div>
         </div>
         {/* REPLACE THIS AREA WITH NEW COLLAGE */}
-        <div className="flex-1 flex items-center justify-center relative min-h-[300px] sm:min-h-[400px] w-full mt-8 sm:mt-0 sm:-ml-48">
+        <div className={`flex-1 flex items-center justify-center relative min-h-[300px] sm:min-h-[400px] w-full mt-8 sm:mt-0 sm:-ml-48 transition-all duration-800 delay-300 ${
+          heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`}>
           {/* Holographic, rotated, floating cards collage with small cards on top and all cards using a subtle gray gradient border */}
           <div className="relative w-full h-[300px] sm:h-[420px] flex items-center justify-center scale-75 sm:scale-100">
             {/* NYC card (bottom layer) */}
@@ -158,7 +178,7 @@ export default function Home() {
                     <div className="flex items-center gap-2 mb-2">
                       <span className="w-10 h-10 rounded-xl bg-[#1b7dff] flex items-center justify-center"><svg width="28" height="28" fill="none" viewBox="0 0 28 28"><polygon points="14,4 17,12 26,12 18.5,17 21,25 14,20 7,25 9.5,17 2,12 11,12" fill="#fff"/></svg></span>
                     </div>
-                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>It's time to get your XP</div>
+                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>It&apos;s time to get your XP</div>
                     <div className="text-[#10182A] text-sm font-medium mb-1" style={{fontFamily:'Inter'}}>Attend a Demo Day Event</div>
                     <div className="flex items-center mt-1">
                       <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
@@ -196,9 +216,18 @@ export default function Home() {
       </section>
 
       {/* FEATURE DEEP-DIVE / INTERACTIVE DEMO SECTION */}
-      <section className="w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0">
-        <h2 className="text-[32px] sm:text-[48px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Build your Plug Score.<br/>Unlock new rooms. Get noticed.</h2>
-        <p className="text-[#B6B9C6] text-center max-w-2xl mb-24 sm:mb-48 text-lg sm:text-xl font-normal px-4" style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and rise on your school's leaderboard.</p>
+      <section 
+        ref={featuresRef}
+        className={`w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
+          featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <h2 className={`text-[32px] sm:text-[48px] font-normal text-white text-center mb-4 transition-all duration-800 delay-200 ${
+          featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Build your Plug Score.<br/>Unlock new rooms. Get noticed.</h2>
+        <p className={`text-[#B6B9C6] text-center max-w-2xl mb-24 sm:mb-48 text-lg sm:text-xl font-normal px-4 transition-all duration-800 delay-400 ${
+          featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and rise on your school&apos;s leaderboard.</p>
         
         {/* Step-by-step walkthrough */}
         <div className="flex flex-col gap-12 sm:gap-16 w-full max-w-6xl">
@@ -207,7 +236,7 @@ export default function Home() {
             <div className="flex-1 order-2 sm:order-1">
               <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 1</div>
               <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Set your vibe</h3>
-              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Tell us what cities, industries, and roles you're into. We'll curate your experience around your goals.</p>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Tell us what cities, industries, and roles you&apos;re into. We&apos;ll curate your experience around your goals.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
@@ -268,7 +297,7 @@ export default function Home() {
                   <div className="bg-white rounded-[16px] p-4">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="w-8 h-8 rounded-full bg-[#1b7dff] flex items-center justify-center text-sm">🧑‍💻</span>
-                      <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Ava (NYU '26)</span>
+                      <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Ava (NYU &apos;26)</span>
                     </div>
                     <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Apply to Y Combinator</div>
                     <div className="text-[#10182A] text-sm mb-3" style={{fontFamily:'Inter'}}>Submit your startup application</div>
@@ -280,7 +309,7 @@ export default function Home() {
                   <div className="bg-white rounded-[16px] p-4">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="w-8 h-8 rounded-full bg-[#c2f04e] flex items-center justify-center text-sm">💬</span>
-                      <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Marcus (Stanford '25)</span>
+                      <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Marcus (Stanford &apos;25)</span>
                     </div>
                     <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Cold DM a VC</div>
                     <div className="text-[#10182A] text-sm mb-3" style={{fontFamily:'Inter'}}>Reach out to 3 investors</div>
@@ -415,7 +444,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Rise on your school's leaderboard</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Rise on your school&apos;s leaderboard</span>
                 </div>
               </div>
             </div>
@@ -426,10 +455,21 @@ export default function Home() {
      
 
       {/* WHY PLUG WORKS SECTION (pixel-perfect) */}
-      <section className="w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0">
-        <h2 className="text-[40px] sm:text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Why Plug Works</h2>
-        <p className="text-[#E6E8F0] text-center max-w-2xl mb-12 sm:mb-16 text-lg sm:text-2xl font-normal px-4" style={{fontFamily:'Inter', lineHeight:'1.3'}}>The engine that turns learning into access, and connections into action.</p>
-        <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-stretch justify-center w-full max-w-6xl">
+      <section 
+        ref={whyWorksRef}
+        className={`w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
+          whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <h2 className={`text-[40px] sm:text-[56px] font-normal text-white text-center mb-4 transition-all duration-800 delay-200 ${
+          whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Why Plug Works</h2>
+        <p className={`text-[#E6E8F0] text-center max-w-2xl mb-12 sm:mb-16 text-lg sm:text-2xl font-normal px-4 transition-all duration-800 delay-400 ${
+          whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{fontFamily:'Inter', lineHeight:'1.3'}}>The engine that turns learning into access, and connections into action.</p>
+        <div className={`flex flex-col sm:flex-row gap-6 sm:gap-8 items-stretch justify-center w-full max-w-6xl transition-all duration-800 delay-600 ${
+          whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           {/* Mission Engine */}
           <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-6 sm:px-8 py-8 sm:py-10 w-full sm:w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Purple Lightning Bolt SVG (small, white bolt) */}
@@ -488,8 +528,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <h4 className="text-xl font-bold text-[#10182A] mb-2" style={{fontFamily:'Inter'}}>You're on the list!</h4>
-                <p className="text-[#B6B9C6] text-sm" style={{fontFamily:'Inter'}}>We'll notify you as soon as Plug is ready.</p>
+                <h4 className="text-xl font-bold text-[#10182A] mb-2" style={{fontFamily:'Inter'}}>You&apos;re on the list!</h4>
+                <p className="text-[#B6B9C6] text-sm" style={{fontFamily:'Inter'}}>We&apos;ll notify you as soon as Plug is ready.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -532,7 +572,7 @@ export default function Home() {
                   <input
                     type="text"
                     name="role"
-                    placeholder="Role or What You're Working On"
+                    placeholder="Role or What You&apos;re Working On"
                     value={formData.role}
                     onChange={handleInputChange}
                     className="w-full border-2 border-[#E6E8F0] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1b7dff] focus:border-[#1b7dff] text-base transition text-black"
@@ -563,10 +603,21 @@ export default function Home() {
       )}
 
       {/* YOUR SOCIAL RESUME, REINVENTED SECTION (pixel-perfect) */}
-      <section className="w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0">
-        <h2 className="text-[40px] sm:text-[56px] font-normal text-white text-center mb-4" style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented.</h2>
-        <p className="text-[#E6E8F0] text-center max-w-2xl mb-8 sm:mb-12 text-lg sm:text-2xl font-normal px-4" style={{fontFamily:'Inter', lineHeight:'1.3'}}>Show off your networking momentum, <br/>not just a GPA.</p>
-        <div className="flex flex-col items-center justify-center">
+      <section 
+        ref={resumeRef}
+        className={`w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
+          resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <h2 className={`text-[40px] sm:text-[56px] font-normal text-white text-center mb-4 transition-all duration-800 delay-200 ${
+          resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented.</h2>
+        <p className={`text-[#E6E8F0] text-center max-w-2xl mb-8 sm:mb-12 text-lg sm:text-2xl font-normal px-4 transition-all duration-800 delay-400 ${
+          resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{fontFamily:'Inter', lineHeight:'1.3'}}>Show off your networking momentum, <br/>not just a GPA.</p>
+        <div className={`flex flex-col items-center justify-center transition-all duration-800 delay-600 ${
+          resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           {/* Profile Card */}
           <div className="bg-[#101622] rounded-[24px] px-6 sm:px-12 py-8 sm:py-10 shadow-lg flex flex-col items-start border border-[#3A4252] relative mb-8 sm:mb-10" style={{boxShadow:'0 8px 32px 0 rgba(16,24,32,0.10)', width:'90vw', maxWidth:'480px'}}>
             {/* Browser dots */}
