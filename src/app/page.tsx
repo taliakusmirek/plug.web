@@ -114,7 +114,7 @@ export default function Home() {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-10">
                 <a href="#about" className="text-white hover:text-[#1b7dff] px-4 py-2 text-lg font-medium transition">About</a>
-                <a href="#features" className="text-white hover:text-[#1b7dff] px-4 py-2 text-lg font-medium transition">Features</a>
+                <a href="#why-plug" className="text-white hover:text-[#1b7dff] px-4 py-2 text-lg font-medium transition">Features</a>
                 <a href="/pricing" className="text-white hover:text-[#1b7dff] px-4 py-2 text-lg font-medium transition">Pricing</a>
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function Home() {
       {/* Hero Section with SVG scalloped border */}
       <section 
         ref={heroRef}
-        className={`relative w-full min-h-[500px] sm:min-h-[700px] flex flex-col sm:flex-row items-center justify-between bg-transparent px-4 sm:px-8 pt-20 sm:pt-24 pb-12 overflow-hidden transition-all duration-800 ease-out ${
+        className={`relative w-full min-h-[500px] sm:min-h-[700px] flex flex-col sm:flex-row items-center justify-between bg-transparent px-4 sm:px-8 pt-32 sm:pt-24 pb-12 overflow-hidden transition-all duration-800 ease-out ${
           heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
@@ -139,34 +139,34 @@ export default function Home() {
           }`} style={{fontFamily:'Inter', letterSpacing: '-0.03em'}}>Plug into the<br/>rooms that<br/>change everything.</h1>
           <p className={`text-base sm:text-lg text-[#B6B9C6] mb-10 max-w-lg mx-auto sm:mx-0 transition-all duration-800 delay-400 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`} style={{fontWeight: 400}}>A social resume, curated events, XP missions, and collab tools to level up your network: built for ambitious Gen Z builders.</p>
+          }`} style={{fontWeight: 400}}>Build your founder momentum, meet your first cofounder, and log your journey — all in one playground.</p>
           <div className={`flex flex-col sm:flex-row gap-4 mb-10 transition-all duration-800 delay-600 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`} style={{justifyContent:'flex-start'}}>
-            <button onClick={openWaitlistModal} className="bg-[#1b7dff] text-white px-6 sm:px-8 py-3 rounded-[10px] font-bold text-base sm:text-lg shadow transition border-2 border-[#1b7dff] hover:bg-[#005be8] hover:border-[#005be8]" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Create Your Plug Profile</button>
+            <button onClick={openWaitlistModal} className="bg-[#1b7dff] text-white px-6 sm:px-8 py-3 rounded-[10px] font-bold text-base sm:text-lg shadow transition border-2 border-[#1b7dff] hover:bg-[#005be8] hover:border-[#005be8]" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Join the Waitlist</button>
             <a href="#how" className="bg-transparent text-white px-6 sm:px-8 py-3 rounded-[10px] font-semibold text-base sm:text-lg border border-white/30 hover:bg-white/10 transition" style={{minWidth:'260px', height:'56px', display:'flex', alignItems:'center', justifyContent:'center'}}>Watch How it Works</a>
           </div>
         </div>
         {/* REPLACE THIS AREA WITH NEW COLLAGE */}
-        <div className={`flex-1 flex items-center justify-center relative min-h-[300px] sm:min-h-[400px] w-full mt-8 sm:mt-0 sm:-ml-48 transition-all duration-800 delay-300 ${
+        <div className={`flex-1 flex items-center justify-center relative min-h-[300px] sm:min-h-[400px] w-full mt-8 sm:mt-0 transition-all duration-800 delay-300 ${
           heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}>
           {/* Holographic, rotated, floating cards collage with small cards on top and all cards using a subtle gray gradient border */}
           <div className="relative w-full h-[300px] sm:h-[420px] flex items-center justify-center scale-75 sm:scale-100">
             {/* NYC card (bottom layer) */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-16 rotate-[-7deg]" style={{zIndex:1}}>
+            <div className="absolute left-1/2 -translate-x-1/2 top-16 rotate-[-7deg] w-[280px] sm:w-[340px]" style={{zIndex:1}}>
               <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
-                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-[340px]">
-                  <div className="px-6 pt-6 pb-4">
-                    <div className="text-xl font-bold text-[#10182A] mb-2" style={{fontFamily:'Inter'}}>Events in New York City</div>
+                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-full">
+                  <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-4">
+                    <div className="text-lg sm:text-xl font-bold text-[#10182A] mb-2" style={{fontFamily:'Inter'}}>Events in New York City</div>
                     {/* Inner card for Startup Pitch Night */}
                     <div className="rounded-2xl p-[4px] bg-gradient-to-br from-[#aeafaf99] via-[#f7f8fbcf] to-transparent">
-                      <div className="bg-white rounded-2xl p-4 flex flex-col items-center">
+                      <div className="bg-white rounded-2xl p-3 sm:p-4 flex flex-col items-center">
                         <div className="rounded-xl overflow-hidden w-full mb-3">
-                          <img src="/pitch.jpg" alt="Event" className="object-cover w-full h-[120px]" style={{objectPosition:'center'}} />
+                          <img src="/pitch.jpg" alt="Event" className="object-cover w-full h-[100px] sm:h-[120px]" style={{objectPosition:'center'}} />
                         </div>
-                        <div className="text-lg  text-[#10182A] mb-3" style={{fontFamily:'Inter'}}>Startup Pitch Night</div>
-                        <button className="bg-[#1b7dff] hover:bg-[#005be8] text-white font-bold text-sm px-5 py-2 rounded-full flex items-center gap-2 border border-[#1b7dff] shadow transition" style={{fontFamily:'Inter'}}>
+                        <div className="text-base sm:text-lg text-[#10182A] mb-3" style={{fontFamily:'Inter'}}>Startup Pitch Night</div>
+                        <button className="bg-[#1b7dff] hover:bg-[#005be8] text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 border border-[#1b7dff] shadow transition" style={{fontFamily:'Inter'}}>
                           RSVP Now
                         </button>
                       </div>
@@ -176,18 +176,18 @@ export default function Home() {
               </div>
             </div>
             {/* Mission card (top right, above NYC card) */}
-            <div className="absolute left-[60%] top-6 rotate-[-2deg]" style={{zIndex:2}}>
+            <div className="absolute left-[55%] sm:left-[60%] top-6 rotate-[-2deg] w-[220px] sm:w-[260px]" style={{zIndex:2}}>
               <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
-                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-[260px]">
-                  <div className="px-5 pt-5 pb-4">
+                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-full">
+                  <div className="px-4 sm:px-5 pt-4 sm:pt-5 pb-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="w-10 h-10 rounded-xl bg-[#1b7dff] flex items-center justify-center"><svg width="28" height="28" fill="none" viewBox="0 0 28 28"><polygon points="14,4 17,12 26,12 18.5,17 21,25 14,20 7,25 9.5,17 2,12 11,12" fill="#fff"/></svg></span>
+                      <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#1b7dff] flex items-center justify-center"><svg width="20" height="20" fill="none" viewBox="0 0 28 28"><polygon points="14,4 17,12 26,12 18.5,17 21,25 14,20 7,25 9.5,17 2,12 11,12" fill="#fff"/></svg></span>
                     </div>
-                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>It&apos;s time to get your XP</div>
-                    <div className="text-[#10182A] text-sm font-medium mb-1" style={{fontFamily:'Inter'}}>Attend a Demo Day Event</div>
+                    <div className="text-[#10182A] font-bold text-sm sm:text-base mb-1" style={{fontFamily:'Inter'}}>It&apos;s time to get your XP</div>
+                    <div className="text-[#10182A] text-xs sm:text-sm font-medium mb-1" style={{fontFamily:'Inter'}}>Build your first landing page</div>
                     <div className="flex items-center mt-1">
-                      <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
-                        <svg width="16" height="16" fill="none" viewBox="0 0 18 18"><circle cx="8" cy="8" r="8" fill="#1b7dff"/><text x="8" y="12" textAnchor="middle" fontSize="10" fill="#fff">✓</text></svg>
+                      <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
+                        <svg width="12" height="12" fill="none" viewBox="0 0 18 18"><circle cx="8" cy="8" r="8" fill="#1b7dff"/><text x="8" y="12" textAnchor="middle" fontSize="8" fill="#fff">✓</text></svg>
                         800 XP
                       </span>
                     </div>
@@ -196,19 +196,19 @@ export default function Home() {
               </div>
             </div>
             {/* Collab Rooms card (below mission, right side) */}
-            <div className="absolute left-[68%] top-44 rotate-[6deg]" style={{zIndex:2}}>
+            <div className="absolute left-[65%] sm:left-[68%] top-36 sm:top-44 rotate-[6deg] w-[200px] sm:w-[250px]" style={{zIndex:2}}>
               <div className="rounded-[28px] p-[5px] bg-gradient-to-br from-[#22272a22] via-[#bfc4cc11] to-transparent shadow-2xl">
-                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-[250px]">
-                  <div className="px-5 pt-5 pb-4">
-                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Join this Collab Room?</div>
-                    <div className="text-[#10182A] text-sm font-medium mb-2" style={{fontFamily:'Inter'}}>Seeking co-founders for health app</div>
+                <div className="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-lg p-0 w-full">
+                  <div className="px-4 sm:px-5 pt-4 sm:pt-5 pb-4">
+                    <div className="text-[#10182A] font-bold text-sm sm:text-base mb-1" style={{fontFamily:'Inter'}}>Join this Build Room?</div>
+                    <div className="text-[#10182A] text-xs sm:text-sm font-medium mb-2" style={{fontFamily:'Inter'}}>Seeking co-founders for health app</div>
                     <div className="flex items-center gap-2 mt-1">
-                      <button className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
-                        <svg width="16" height="16" fill="none" viewBox="0 0 18 18"><circle cx="8" cy="8" r="8" fill="#1b7dff"/><path d="M5 8l2 2 4-4" stroke="#fff" strokeWidth="1.5"/></svg>
+                      <button className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-xs px-2 sm:px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
+                        <svg width="12" height="12" fill="none" viewBox="0 0 18 18"><circle cx="8" cy="8" r="8" fill="#1b7dff"/><path d="M5 8l2 2 4-4" stroke="#fff" strokeWidth="1.5"/></svg>
                         250 XP
                       </button>
-                      <button className="bg-[#F5F6FA] text-[#10182A] font-bold text-sm px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
-                        <svg width="16" height="16" fill="none" viewBox="0 0 18 18"><rect width="12" height="12" rx="2" fill="#e6e8f0" x="2" y="2"/><text x="8" y="12" textAnchor="middle" fontSize="8" fill="#222">?</text></svg>
+                      <button className="bg-[#F5F6FA] text-[#10182A] font-bold text-xs px-2 sm:px-3 py-1 rounded-full flex items-center gap-1 border border-[#E6E8F0]" style={{fontFamily:'Inter'}}>
+                        <svg width="12" height="12" fill="none" viewBox="0 0 18 18"><rect width="12" height="12" rx="2" fill="#e6e8f0" x="2" y="2"/><text x="8" y="12" textAnchor="middle" fontSize="8" fill="#222">?</text></svg>
                         Details
                       </button>
                     </div>
@@ -223,25 +223,25 @@ export default function Home() {
       {/* FEATURE DEEP-DIVE / INTERACTIVE DEMO SECTION */}
       <section 
         ref={featuresRef}
-        className={`w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
+        className={`w-full py-32 sm:py-40 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
           featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         <h2 className={`text-[32px] sm:text-[48px] font-normal text-white text-center mb-4 transition-all duration-800 delay-200 ${
           featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Build your Plug Score.<br/>Unlock new rooms. Get noticed.</h2>
+        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Forget resumes. Show your build log.</h2>
         <p className={`text-[#B6B9C6] text-center max-w-2xl mb-24 sm:mb-48 text-lg sm:text-xl font-normal px-4 transition-all duration-800 delay-400 ${
           featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from RSVPing to events, to helping someone cold DM a VC. Earn badges, access exclusive chats, and rise on your school&apos;s leaderboard.</p>
+        }`} style={{fontFamily:'Inter', lineHeight:'1.4'}}>Your XP grows with every action – from completing build missions to joining build rooms. Earn badges, unlock exclusive access, and track your founder journey.</p>
         
         {/* Step-by-step walkthrough */}
-        <div className="flex flex-col gap-12 sm:gap-16 w-full max-w-6xl">
+        <div className="flex flex-col gap-20 sm:gap-32 w-full max-w-6xl">
           {/* Step 1: Set your vibe */}
           <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
             <div className="flex-1 order-2 sm:order-1">
               <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 1</div>
-              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Set your vibe</h3>
-              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Tell us what cities, industries, and roles you&apos;re into. We&apos;ll curate your experience around your goals.</p>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Find your circle</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Choose your cities, interests, and vibes. We&apos;ll help you find other builders who share your mission — even if you&apos;re still figuring it out.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
@@ -304,8 +304,8 @@ export default function Home() {
                       <span className="w-8 h-8 rounded-full bg-[#1b7dff] flex items-center justify-center text-sm">🧑‍💻</span>
                       <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Ava (NYU &apos;26)</span>
                     </div>
-                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Apply to Y Combinator</div>
-                    <div className="text-[#10182A] text-sm mb-3" style={{fontFamily:'Inter'}}>Submit your startup application</div>
+                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Launch your first MVP</div>
+                    <div className="text-[#10182A] text-sm mb-3" style={{fontFamily:'Inter'}}>Build and deploy a simple landing page</div>
                     <div className="flex items-center justify-between">
                       <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-xs px-3 py-1 rounded-full">1200 XP</span>
                       <span className="text-[#1b7dff] text-sm font-semibold">Due in 3 days</span>
@@ -316,8 +316,8 @@ export default function Home() {
                       <span className="w-8 h-8 rounded-full bg-[#c2f04e] flex items-center justify-center text-sm">💬</span>
                       <span className="text-[#B6B9C6] text-sm font-normal" style={{fontFamily:'Inter'}}>Marcus (Stanford &apos;25)</span>
                     </div>
-                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Cold DM a VC</div>
-                    <div className="text-[#10182A] text-sm mb-3" style={{fontFamily:'Inter'}}>Reach out to 3 investors</div>
+                    <div className="text-[#10182A] font-bold text-base mb-1" style={{fontFamily:'Inter'}}>Get your first user</div>
+                    <div className="text-[#10182A] text-sm mb-3" style={{fontFamily:'Inter'}}>Find and interview 3 potential customers</div>
                     <div className="flex items-center justify-between">
                       <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-xs px-3 py-1 rounded-full">800 XP</span>
                       <span className="text-[#1b7dff] text-sm font-semibold">Due in 5 days</span>
@@ -328,8 +328,8 @@ export default function Home() {
             </div>
             <div className="flex-1 order-1 sm:order-2">
               <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 2</div>
-              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Get missions</h3>
-              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Weekly XP-driven tasks that push you forward. From applying to fellowships to networking with founders.</p>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Start building right now</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Get &quot;Build Missions&quot; to push your ideas forward: test your concept, create a landing page, find your first user, or pitch your first investor.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
@@ -351,8 +351,8 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
             <div className="flex-1">
               <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 3</div>
-              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Attend events & collab</h3>
-              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Curated events from Partiful, Eventbrite, and exclusive Plug meetups. Plus collab rooms for finding co-founders.</p>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Join a build room</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Hop into a small, focused build room where you collaborate, share progress, and jam with your first circle.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
@@ -360,7 +360,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
-                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Collab rooms for project matching</span>
+                  <span className="text-white text-sm sm:text-base" style={{fontFamily:'Inter'}}>Build rooms for project matching</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
@@ -384,7 +384,7 @@ export default function Home() {
                 </div>
                 {/* Collab room card */}
                 <div className="bg-white rounded-[20px] shadow-lg p-4">
-                  <div className="text-[#10182A] font-bold text-lg mb-2" style={{fontFamily:'Inter'}}>Collab Room: AI Startup</div>
+                  <div className="text-[#10182A] font-bold text-lg mb-2" style={{fontFamily:'Inter'}}>Build Room: AI Startup</div>
                   <div className="text-[#B6B9C6] text-sm mb-3" style={{fontFamily:'Inter'}}>Looking for technical co-founder</div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="bg-[#F5F6FA] text-[#1b7dff] font-bold text-xs px-2 py-1 rounded-full">Tech</span>
@@ -436,8 +436,8 @@ export default function Home() {
             </div>
             <div className="flex-1 order-1 sm:order-2">
               <div className="text-[#1b7dff] font-bold text-base sm:text-lg mb-2" style={{fontFamily:'Inter'}}>Step 4</div>
-              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Earn XP → Unlock access</h3>
-              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Your XP grows with every action. Level up to unlock exclusive rooms, founder chats, and premium events.</p>
+              <h3 className="text-[24px] sm:text-[32px] font-normal text-white mb-4" style={{fontFamily:'Inter', lineHeight:'1.2'}}>Level up & show your journey</h3>
+              <p className="text-[#B6B9C6] text-base sm:text-lg mb-6" style={{fontFamily:'Inter', lineHeight:'1.5'}}>Earn XP as you complete missions and collabs. Your Plug Profile becomes your live &quot;build log&quot; — not just a static resume.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#1b7dff]"></div>
@@ -461,17 +461,18 @@ export default function Home() {
 
       {/* WHY PLUG WORKS SECTION (pixel-perfect) */}
       <section 
+        id="why-plug"
         ref={whyWorksRef}
-        className={`w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
+        className={`w-full py-32 sm:py-40 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
           whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         <h2 className={`text-[40px] sm:text-[56px] font-normal text-white text-center mb-4 transition-all duration-800 delay-200 ${
           whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Why Plug Works</h2>
+        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Why Plug?</h2>
         <p className={`text-[#E6E8F0] text-center max-w-2xl mb-12 sm:mb-16 text-lg sm:text-2xl font-normal px-4 transition-all duration-800 delay-400 ${
           whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{fontFamily:'Inter', lineHeight:'1.3'}}>The engine that turns learning into access, and connections into action.</p>
+        }`} style={{fontFamily:'Inter', lineHeight:'1.3'}}>Your first circle changes everything.</p>
         <div className={`flex flex-col sm:flex-row gap-6 sm:gap-8 items-stretch justify-center w-full max-w-6xl transition-all duration-800 delay-600 ${
           whyWorksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -482,7 +483,7 @@ export default function Home() {
               <rect width="48" height="48" rx="24" fill="#c2f04e"/>
               <path d="M28.5 9L15 30h7.5l-1.5 9L33 18h-7.5l1.5-9z" fill="#fff" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
             </svg>
-            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Mission Engine</div>
+            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Build Missions</div>
             <div className="text-[#222] text-sm sm:text-base text-center" style={{fontFamily:'Inter'}}>Weekly XP-driven tasks that push you forward</div>
           </div>
           {/* Event Radar */}
@@ -503,7 +504,7 @@ export default function Home() {
           <div className="flex flex-col items-center bg-[#F8F4E8] rounded-[18px] px-6 sm:px-8 py-8 sm:py-10 w-full sm:w-[240px] shadow" style={{boxShadow:'0 4px 24px 0 rgba(16,24,32,0.08)'}}>
             {/* Chat bubbles SVG */}
             <svg width="48" height="48" fill="none" viewBox="0 0 48 48" className="mb-4"><ellipse cx="24" cy="24" rx="16" ry="12" fill="#c2f04e"/><ellipse cx="32" cy="32" rx="10" ry="7" fill="#c2f04e"/><ellipse cx="16" cy="32" rx="10" ry="7" fill="#1b7dff"/></svg>
-            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Collab Rooms</div>
+            <div className="text-[#10182A] font-bold text-lg sm:text-xl mb-2 text-center" style={{fontFamily:'Inter'}}>Build Rooms</div>
             <div className="text-[#222] text-sm sm:text-base text-center" style={{fontFamily:'Inter'}}>Match with other builders by project, vibe, or goal</div>
           </div>
         </div>
@@ -610,16 +611,13 @@ export default function Home() {
       {/* YOUR SOCIAL RESUME, REINVENTED SECTION (pixel-perfect) */}
       <section 
         ref={resumeRef}
-        className={`w-full py-12 sm:py-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
+        className={`w-full py-32 sm:py-40 pt-12 sm:pt-24 flex flex-col items-center bg-transparent px-4 sm:px-0 transition-all duration-800 ease-out ${
           resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
-        <h2 className={`text-[40px] sm:text-[56px] font-normal text-white text-center mb-4 transition-all duration-800 delay-200 ${
+        <h2 className={`text-[40px] sm:text-[56px] font-normal text-white text-center mb-12 sm:mb-16 transition-all duration-800 delay-200 ${
           resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your social resume,<br/>reinvented.</h2>
-        <p className={`text-[#E6E8F0] text-center max-w-2xl mb-8 sm:mb-12 text-lg sm:text-2xl font-normal px-4 transition-all duration-800 delay-400 ${
-          resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{fontFamily:'Inter', lineHeight:'1.3'}}>Show off your networking momentum, <br/>not just a GPA.</p>
+        }`} style={{fontFamily:'Inter', lineHeight:'1.1'}}>Your build log,<br/>not your resume.</h2>
         <div className={`flex flex-col items-center justify-center transition-all duration-800 delay-600 ${
           resumeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -654,7 +652,7 @@ export default function Home() {
             </div>
           </div>
           {/* CTA Button */}
-          <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-6 sm:px-10 py-4 sm:py-5 rounded-[12px] font-bold text-lg sm:text-2xl shadow transition mt-6 sm:mt-10 mb-12 sm:mb-20 border-2 border-[#1b7dff] w-full sm:w-auto min-w-[280px] sm:min-w-[340px]" style={{textAlign:'center', fontFamily:'Inter'}}>Claim your Plug handle</button>
+          <button onClick={openWaitlistModal} className="bg-[#1b7dff] hover:bg-[#005be8] text-white px-6 sm:px-10 py-4 sm:py-5 rounded-[12px] font-bold text-lg sm:text-2xl shadow transition mt-6 sm:mt-10 mb-12 sm:mb-20 border-2 border-[#1b7dff] w-full sm:w-auto min-w-[280px] sm:min-w-[340px]" style={{textAlign:'center', fontFamily:'Inter'}}>Start your build log</button>
         </div>
       </section>
 
